@@ -1,0 +1,56 @@
+package com.kyobo.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.kyobo.dto.Notice;
+
+@Repository
+public class NoticeDAOImple implements NoticeDAO {
+
+	@Autowired
+	private SqlSession sqlSession;
+	
+	@Override
+	public List<Notice> getNoticeList() {
+		return sqlSession.selectList("notice.getNoticeList");
+	}
+
+	@Override
+	public Notice getNotice(int no) {
+		return sqlSession.selectOne("notice.getNotice", no);
+	}
+
+	@Override
+	public int maxNum() {
+		return sqlSession.selectOne("notice.maxNum");
+	}
+
+	@Override
+	public void insNotice(Notice notice) {
+		sqlSession.insert("notice.insNotice", notice);
+		
+	}
+
+	@Override
+	public void upNotice(Notice notice) {
+		sqlSession.update("notice.upNotice", notice);
+		
+	}
+
+	@Override
+	public void delNotice(int no) {
+		sqlSession.delete("notice.delNotice", no);
+	}
+
+	@Override
+	public void countUpCnt(int no) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+}

@@ -1,0 +1,104 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"  %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri = "http://java.sun.com/jsp/jstl/functions" %>
+<c:set var="path2" value="${pageContext.request.contextPath }" />
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>공지사항 목록</title>
+	<jsp:include page="../include/head.jsp"></jsp:include>
+	
+	<style>
+	th.item1 { width:10%; text-align:center; }
+	th.item2 { width:60%; text-align:center; }
+	th.item3 { width:20%; text-align:center; }
+	th.item4 { width:10%; text-align:center; }
+	
+	td#list_item { text-align:center; }
+	</style>
+</head>
+<body>
+<!-- 헤더 부분 인클루드 -->
+<div class="full-wrap">
+	<header id="hd" class="header">
+		<div class="container">
+			<jsp:include page="../include/header.jsp"></jsp:include>
+		</div>
+	</header>
+</div>
+<div class="container">
+	<main class="contents">
+		<div id="breadcrumb" class="container breadcrumb-wrap clr-fix" style="height:60px; line-height:60px;">
+	    	<nav class="breadcrumb" aria-label="breadcrumbs">
+			  <ul>
+			    <li><a href="${path2 }">Home</a></li>
+			    <li><a href="${path2 }/notice/list.do">Notice</a></li>
+			    <li class="is-active"><a href="#" aria-current="page">List</a></li>
+			  </ul>
+			</nav>
+    	</div>
+ 	    <section class="page" id="page1">
+    		<h2 class="page-title">공지사항 목록</h2>
+    		<div class="page-wrap">
+	    		<div class="clr-fix">
+	    			<br>
+					<table class="table" id="tb1">
+						<thead>
+							<tr>
+								<th class="item1" id="item">번호</th>
+								<th class="item2" id="item">제목</th>
+								<th class="item3" id="item">작성일</th>
+								<th class="item4" id="item">조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<c:if test="${not empty list }">
+								<c:forEach var="dto" items="${list }">
+								<tr>
+									<td id="list_item">${dto.no }</td>
+									<td>
+										<a href="${path2 }/notice/detail.do?no=${dto.no }">${dto.title }</a>
+									</td>
+									<td id="list_item">${dto.resdate }</td>
+									<td id="list_item">${dto.visited }</td>
+								</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${empty list }">
+								<tr>
+									<td colspan="4"><strong>공지사항이 존재하지 않습니다.</strong></td>
+								</tr>
+							</c:if>
+						</tbody>
+					</table>
+					<script>
+					$(document).ready(function(){
+						$("#tb1").DataTable({
+							order:[[0,"desc"]]
+						});
+					});
+					</script>
+					<hr>
+					<c:if test="${!cus.id.equals('admin') }">
+					<div class="buttons">
+					  <a href="${path2 }/notice/insert.do" class="button is-danger">글 등록</a>
+					</div>
+					</c:if>
+				</div>
+    		</div>
+    	</section>
+	</main>
+</div>
+<!-- 푸터 부분 인클루드 -->
+<div class="full-wrap">
+	<footer id="ft">
+		<jsp:include page="../include/footer.jsp"></jsp:include>
+	</footer>
+</div>
+</body>
+</html>

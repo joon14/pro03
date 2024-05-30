@@ -1,0 +1,12 @@
+package com.kyobo.dto;
+
+public class Book {
+	private int no;
+	private String name;
+	private String genre;
+	private String author;
+	private String pub;
+	private String content;
+	private String pub_date;
+	private int price;
+}

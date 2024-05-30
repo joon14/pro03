@@ -1,0 +1,5 @@
+package com.kyobo.filter;
+
+public interface HandlerInterceptor {
+
+}

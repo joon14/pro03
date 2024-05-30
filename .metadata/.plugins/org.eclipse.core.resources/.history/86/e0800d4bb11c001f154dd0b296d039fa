@@ -1,0 +1,5 @@
+package com.kyobo.controller;
+
+public class MemberController {
+
+}

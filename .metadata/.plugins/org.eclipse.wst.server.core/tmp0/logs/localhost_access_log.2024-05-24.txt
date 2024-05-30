@@ -1,0 +1,14 @@
+127.0.0.1 - - [24/May/2024:09:02:10 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:02:10 +0900] "GET /myapp/ HTTP/1.1" 404 817
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:02:10 +0900] "GET /favicon.ico HTTP/1.1" 404 818
+127.0.0.1 - - [24/May/2024:09:09:17 +0900] "GET / HTTP/1.1" 404 807
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/ HTTP/1.1" 200 6636
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/css/common.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/css/normalize.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/css/datatables.min.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/js/swiper.js HTTP/1.1" 404 721
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/images/logo1.svg HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/js/parallax.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/css/bulma.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/js/datatables.min.js HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [24/May/2024:09:09:18 +0900] "GET /myapp/resources/js/jquery-3.7.1.js HTTP/1.1" 304 -

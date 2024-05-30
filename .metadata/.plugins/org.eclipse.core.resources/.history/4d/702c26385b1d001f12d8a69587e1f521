@@ -1,0 +1,55 @@
+package com.kyobo.service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.kyobo.dao.NoticeDAO;
+import com.kyobo.dto.Notice;
+
+@Service
+public class NoticeServiceImple implements NoticeService {
+
+	@Autowired
+	private NoticeDAO noticeDAO;
+
+	@Override
+	public List<Notice> getNoticeList() {
+		return noticeDAO.getNoticeList();
+	}
+
+	@Transactional
+	@Override
+	public Notice getNotice(int no) {
+		NoticeDAO.visitedCount(no);
+		return noticeDAO.getNotice(no);
+	}
+
+	@Override
+	public int maxNum() {
+		return noticeDAO.maxNum();
+	}
+
+	@Override
+	public void insNotice(Notice notice) {
+		noticeDAO.insNotice(notice);
+		
+	}
+
+	@Override
+	public void upNotice(Notice notice) {
+		noticeDAO.upNotice(notice);
+	}
+
+	@Override
+	public void delNotice(int no) {
+		noticeDAO.delNotice(no);
+	}
+
+	@Override
+	public void countUpCnt(int no) {
+		noticeDAO.visitedCount(no);
+	}
+}

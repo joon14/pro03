@@ -1,0 +1,5 @@
+package com.kyobo.service;
+
+public interface BookService {
+
+}

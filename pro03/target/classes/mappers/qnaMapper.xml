@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="qna">
+	<select id="getQnaList" resultType="com.kyobo.dto.Qna">
+		select * from qna order by resdate desc
+	</select>
+	<select id="getQna" resultType="com.kyobo.dto.Qna">
+		select * from qna where no = #{no}
+	</select>
+	<select id="maxNum" resultType="int">
+		select no from (select * from qna order by no desc) where rownum=1
+	</select>
+	<insert id="insQuestion">
+		insert into qna values (qseq.nextval, 1, #{parno}, #{title}, #{content}, default, #{aid})
+	</insert>
+	<insert id="insAnswer">
+		insert into qna values (qseq.nextval, 2, #{parno}, #{title}, #{content}, default, #{aid})
+	</insert>
+	<delete id="delQna">
+		delete from qna where parno=#{parno}
+	</delete>
+</mapper>
+<!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->

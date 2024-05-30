@@ -1,0 +1,55 @@
+package com.kyobo.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import com.kyobo.dto.Book;
+
+@Repository
+public class BookDAOImple implements BookDAO {
+	
+	@Autowired
+	private SqlSession sqlSession;
+
+	@Override
+	public int getTotalCount() {
+		return sqlSession.selectOne("book.getTotalCount");
+	}
+
+	@Override
+	public List<Book> getBookList() {
+		return sqlSession.selectList("book.getBookList");
+	}
+
+	@Override
+	public List<Book> getBookGenreList(String genre) {
+		return sqlSession.selectList("book.getBookGenreList", genre);
+	}
+
+	@Override
+	public Book getBook(int no) {
+		return sqlSession.selectOne("book.getBook", no);
+	}
+
+	@Override
+	public void insBook(Book Book) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void upBook(Book Book) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delBook(int no) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+}

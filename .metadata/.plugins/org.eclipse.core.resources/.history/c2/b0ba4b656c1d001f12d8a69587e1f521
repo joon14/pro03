@@ -1,0 +1,14 @@
+package com.kyobo.dao;
+
+import java.util.List;
+
+import com.kyobo.dto.Book;
+
+public interface BookDAO {
+	public int getTotalCount();
+	public List<Book> getBookList();
+	public Book getBook(String id);
+	public void insBook(Book Book);
+	public void upBook(Book Book);
+	public void delBook(String id);
+}

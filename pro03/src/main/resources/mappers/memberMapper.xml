@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	<select id="getMemberList" resultType="com.kyobo.dto.Member">
+		select * from member order by regdate desc
+	</select>
+	<select id="getMember" resultType="com.kyobo.dto.Member">
+		select * from member where id = #{id}
+	</select>
+	<select id="maxNum" resultType="int">
+		select count(*) from member
+	</select>
+	<insert id="insMember">
+		insert into member values (#{id}, #{pw}, #{name}, #{tel}, #{email}, #{addr1}, #{addr2}, #{postcode}, default)
+	</insert>
+	<update id="upMember">
+		update member set pw=#{pw}, name=#{name}, tel=#{tel}, email=#{email}, addr1=#{addr1}, addr2=#{addr2}, postcode=#{postcode} where id=#{id}
+	</update>
+	<delete id="delMember">
+		delete from member where id=#{id}
+	</delete>
+</mapper>
+<!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->

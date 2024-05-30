@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC 
+"-//mybatis.org//DTD Mapper 3.0//EN" 
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="notice">
+	<select id="getNoticeList" resultType="com.kyobo.dto.Notice">
+		select * from notice order by no desc
+	</select>
+	<select id="getNotice" resultType="com.kyobo.dto.Notice">
+		select * from notice where no = #{no}
+	</select>
+	<select id="maxNum" resultType="int">
+		select no from (select * from notice order by no desc) where rownum=1
+	</select>
+	<insert id="insNotice">
+		insert into notice values (nseq.nextval, #{title}, #{content}, default, default)
+	</insert>
+	<update id="upNotice">
+		update notice set title=#{title}, content=#{content} where no=#{no}
+	</update>
+	<!-- 공지사항 조회수 증가 -->
+	<update id="visitedCount" parameterType="int">
+		update notice set visited=visited+1 where no=#{no}
+	</update>
+	<delete id="delNotice">
+		delete from notice where no=#{no}
+	</delete>
+</mapper>
+<!-- 해당 요소의 id는 중복되어서도 안되며, 메소드 이름을 의미합니다. -->
